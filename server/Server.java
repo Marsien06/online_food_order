@@ -2,12 +2,11 @@ package server;
 
 import dao.FoodDAO;
 import dao.OrderDAO;
-import model.FoodItem;
-import model.Order;
-
 import java.io.*;
 import java.net.*;
 import java.util.List;
+import model.FoodItem;
+import model.Order;
 
 public class Server {
     private static FoodDAO foodDAO = new FoodDAO();
@@ -60,10 +59,10 @@ public class Server {
 
             } else if (request instanceof FoodItem) {
                 FoodItem f = (FoodItem) request;
-                if (f.getId() == 0) { // new food
+                if (f.getId() == 0) { 
                     foodDAO.insert(f);
                     out.writeObject(f.getId());
-                } else { // edit food
+                } else { 
                     foodDAO.update(f);
                     out.writeObject("OK");
                 }

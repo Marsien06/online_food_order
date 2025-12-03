@@ -2,17 +2,15 @@ package view;
 
 import dao.FoodDAO;
 import dao.OrderDAO;
-import model.CartItem;
-import model.FoodItem;
-import model.Order;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import model.CartItem;
+import model.FoodItem;
+import model.Order;
 
 public class MenuUI extends JFrame {
     private FoodDAO foodDAO = new FoodDAO();
@@ -35,6 +33,8 @@ public class MenuUI extends JFrame {
         menuTable = new JTable(menuModel);
         JScrollPane spMenu = new JScrollPane(menuTable);
 
+        JButton btnRefresh = new JButton("Refresh Menu");
+
         JButton btnAddToCart = new JButton("Add to Cart");
         JButton btnViewCart = new JButton("View Cart");
         JButton btnAdmin = new JButton("Admin Panel");
@@ -43,6 +43,7 @@ public class MenuUI extends JFrame {
         top.add(btnAddToCart);
         top.add(btnViewCart);
         top.add(btnAdmin);
+        top.add(btnRefresh);
 
         totalLabel = new JLabel("Cart: 0 items, Total: $0.00");
 
@@ -54,9 +55,14 @@ public class MenuUI extends JFrame {
 
         btnAddToCart.addActionListener(e -> addSelectedToCart());
         btnViewCart.addActionListener(e -> new CartUI(this, cart).setVisible(true));
-        btnAdmin.addActionListener(e -> new AdminUI(this).setVisible(true));
+        btnAdmin.addActionListener(e -> {AdminUI admin = new AdminUI();
+            admin.setVisible(true);
+        });
+        btnRefresh.addActionListener(e->refresh());
     }
 
+
+    //methods
     public void refresh() {
         loadMenu();
         updateTotalLabel();

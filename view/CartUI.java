@@ -1,13 +1,10 @@
 package view;
 
-import model.CartItem;
-
+import java.awt.*;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.awt.event.*;
-
-import java.util.List;
+import model.CartItem;
 
 public class CartUI extends JDialog {
     private DefaultTableModel model;
@@ -46,6 +43,7 @@ public class CartUI extends JDialog {
         btnCheckout.addActionListener(e -> doCheckout());
     }
 
+    //methods
     private void reload() {
         model.setRowCount(0);
         for (CartItem ci : cart) {

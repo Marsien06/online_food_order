@@ -1,11 +1,10 @@
 package client;
 
-import model.FoodItem;
-import model.Order;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
+import model.FoodItem;
+import model.Order;
 
 public class SocketClient {
     private String host;
@@ -57,7 +56,7 @@ public class SocketClient {
              ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
             out.writeObject("DELETE_FOOD:" + foodId);
-            in.readObject(); // wait for OK
+            in.readObject(); 
         }
     }
 
@@ -68,7 +67,7 @@ public class SocketClient {
             out.writeObject(f);
             Object res = in.readObject();
             if (res instanceof Integer) return (Integer) res; // new food ID
-            return 0; // edited
+            return 0; 
         }
     }
 }

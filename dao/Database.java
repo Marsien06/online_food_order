@@ -5,10 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    // Update URL, user, password for your MySQL server
     private static final String URL = "jdbc:mysql://localhost:3306/food_order?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
-    private static final String PASSWORD = "Marsien06@0608"; // set your password
+    private static final String PASSWORD = "********"; // set your password
 
     static {
         try {

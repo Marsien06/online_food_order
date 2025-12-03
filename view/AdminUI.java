@@ -1,39 +1,43 @@
 package view;
 
 import client.SocketClient;
+import java.awt.*;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import model.FoodItem;
 import model.Order;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.List;
-
-public class AdminUI extends JDialog {
+public class AdminUI extends JFrame {
     private SocketClient client = new SocketClient("localhost", 5000);
     private DefaultTableModel foodModel, orderModel;
     private JTable foodTable, orderTable;
 
-    public AdminUI(JFrame parent) {
-        super(parent, "Admin Panel", true);
+    public AdminUI() {
+        setTitle("Admin Panel");
         setSize(900, 500);
-        setLocationRelativeTo(parent);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // close only this window
+
         JTabbedPane tabs = new JTabbedPane();
 
         // Food tab
-        foodModel = new DefaultTableModel(new Object[]{"ID","Name","Category","Price"},0){
+        foodModel = new DefaultTableModel(new Object[]{"ID","Name","Category","Price"},0) {
             public boolean isCellEditable(int r,int c){ return false; }
         };
         foodTable = new JTable(foodModel);
         JPanel foodPanel = new JPanel(new BorderLayout());
         foodPanel.add(new JScrollPane(foodTable), BorderLayout.CENTER);
+
         JPanel foodBtns = new JPanel();
-        JButton btnAdd = new JButton("Add"), btnEdit = new JButton("Edit"), btnDelete = new JButton("Delete");
+        JButton btnAdd = new JButton("Add");
+        JButton btnEdit = new JButton("Edit");
+        JButton btnDelete = new JButton("Delete");
         foodBtns.add(btnAdd); foodBtns.add(btnEdit); foodBtns.add(btnDelete);
         foodPanel.add(foodBtns, BorderLayout.SOUTH);
 
         // Orders tab
-        orderModel = new DefaultTableModel(new Object[]{"ID","Customer","Total","Created At"},0){
+        orderModel = new DefaultTableModel(new Object[]{"ID","Customer","Total","Created At"},0) {
             public boolean isCellEditable(int r,int c){ return false; }
         };
         orderTable = new JTable(orderModel);
@@ -49,13 +53,13 @@ public class AdminUI extends JDialog {
         loadFoods();
         loadOrders();
 
-        // Buttons
         btnAdd.addActionListener(e -> addFood());
         btnEdit.addActionListener(e -> editFood());
         btnDelete.addActionListener(e -> deleteFood());
         btnDetails.addActionListener(e -> showDetails());
     }
 
+    //methods
     private void loadFoods() {
         foodModel.setRowCount(0);
         try {
