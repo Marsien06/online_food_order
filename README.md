@@ -109,7 +109,7 @@ javac -cp ".;lib\mysql-connector-j-8.1.0.jar" -d bin app\*.java client\*.java se
 java -cp "bin;lib\mysql-connector-j-8.1.0.jar" app.AppLauncher
 ```
 
-5. (Optional) **Run server if using sockets:**
+5. **Run server if using sockets:**
 
 ```powershell
 java -cp "bin;lib\mysql-connector-j-8.1.0.jar" server.Server
@@ -140,19 +140,10 @@ java -cp "bin;lib\mysql-connector-j-8.1.0.jar" server.Server
 
 | Customer View | Cart View | Admin Panel |
 |---------------|-----------|-------------|
-| ![menu](screenshots/menu.png) | ![cart](screenshots/cart.png) | ![admin](screenshots/admin.png) |
-
-> Replace the `screenshots/*.png` files with actual images from your project.
+| ![menu](screenshots/menu.png) | ![cart](screenshots/cart.png) | ![admin_panel](screenshots/admin_panel.png) ![admin_details(btn)](screenshots/admin_details.png) ![admin_order](screenshots/admin_orders.png)|
 
 ---
 
-## **Notes**
-
-- All model classes implement `Serializable` to work with Swing dialogs.  
-- Update MySQL credentials in `dao/Database.java` before running.  
-- Can be extended to client-server architecture using sockets.  
-
----
 
 ## **License**
 
