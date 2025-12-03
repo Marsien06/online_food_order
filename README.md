@@ -20,7 +20,7 @@ Features include:
 ## **Project Structure**
 
 ```
-src/
+food_order/
  ├─ app/
  │   └─ AppLauncher.java
  ├─ model/
@@ -35,8 +35,8 @@ src/
  │   ├─ MenuUI.java
  │   ├─ CartUI.java
  │   └─ AdminUI.java
- ├─ client/   (optional socket client)
- └─ server/   (optional socket server)
+ ├─ client/SocketClient.java
+ └─ server/Server.java   
 lib/
  └─ mysql-connector-j-8.1.0.jar
 bin/
