@@ -143,8 +143,3 @@ java -cp "bin;lib\mysql-connector-j-8.1.0.jar" server.Server
 | ![menu](screenshots/menu.png) | ![cart](screenshots/cart.png) | ![admin_panel](screenshots/admin_panel.png) ![admin_details(btn)](screenshots/admin_details.jpg) ![admin_order](screenshots/admin_orders.jpg)|
 
 ---
-
-
-## **License**
-
-MIT License. See [LICENSE](LICENSE) for details.
